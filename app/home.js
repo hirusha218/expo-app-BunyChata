@@ -3,13 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Pressable, Image, TextInput }
 import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons'; // Icons
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FlashList } from "@shopify/flash-list";
-import { useNavigation } from '@react-navigation/native'; // Add for navigation
 import { router } from "expo-router";
 
 const Home = () => {
     const [getChatArray, setChatArray] = useState([]);
-    const navigation = useNavigation(); // Hook for navigation
-    const [searchQuery, setSearchQuery] = useState(""); // State to manage the search query
+const [searchQuery, setSearchQuery] = useState(""); // State to manage the search query
     const [isSearching, setIsSearching] = useState(false);
     const [filteredChatArray, setFilteredChatArray] = useState([]);
 

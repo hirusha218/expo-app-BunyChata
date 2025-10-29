@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Switch, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from "expo-router";
 
 export default function ProfileScreen() {
-  const route = useRoute(); // Get route params
-  const item = route.params; // Assuming user data is passed via route params
   const [avatarUri, setAvatarUri] = useState(null); // Store selected avatar URI
   const [isAIHelpEnabled, setIsAIHelpEnabled] = useState(false); // Toggle switch for AI Help
-  const navigation = useNavigation(); // Navigation hook
 
   const [userName, setUresName] = useState(""); // Toggle
 
@@ -32,7 +29,7 @@ export default function ProfileScreen() {
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem('user'); // Clear user data
-      navigation.replace('index'); // Redirect to SignupScreen
+      router.replace("/"); // Redirect to home
       console.log("User logged out successfully");
     } catch (error) {
       console.log("Error logging out:", error);
@@ -79,7 +76,7 @@ export default function ProfileScreen() {
 
   // Handle back button press
   const handleBackPress = () => {
-    navigation.replace('home'); // Navigate to the previous screen
+    router.replace("/home"); // Navigate to home
   };
 
   return (
@@ -117,7 +114,7 @@ export default function ProfileScreen() {
         <View style={styles.optionRow}>
           <Ionicons name="globe-outline" size={24} color="#adff2f" />
           <Text style={styles.optionText}>User Page Address</Text>
-          <Text style={styles.optionValue}>chatapp.com/{item ? item.firstname : "lastname"}</Text>
+          <Text style={styles.optionValue}>chatapp.com/profile</Text>
         </View>
       </View>
 

@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Pressable, Image } from 'reac
 import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons'; // Icons
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FlashList } from "@shopify/flash-list";
-import { useNavigation } from '@react-navigation/native'; // Add for navigation
 import { router } from "expo-router";
 
 
